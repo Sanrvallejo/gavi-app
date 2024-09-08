@@ -3,127 +3,93 @@ package com.sena.gavi.model.entities;
 import com.sena.gavi.enums.Category;
 import com.sena.gavi.enums.Tax;
 import com.sena.gavi.enums.Units;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "products")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "BINARY(16)")
     private String id;
+
+    //para almacenar la fecha usamos Temporal para especificar a JPA el tipo de fecha almacenada
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", nullable = false)
     private Date cretaedAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at", nullable = true)
     private Date updatedAt;
+
+    //estado del produto para cuando se lo elimine
+    private boolean state;
+    //código único para el producto (puede ser el código de barras)
     private String code;
     private String name;
+
+    @Enumerated(EnumType.STRING)
     private Category category;
-    private Double amount;
+
+    private Double stock;
+
+    //medida en la que se guardará y venderá el producto
+    @Enumerated(EnumType.STRING)
     private Units unit;
+
     private Double cost;
-    private Double price;
-    private Double profit;
+
+    //tipo de impuesto que paga
+    @Enumerated(EnumType.STRING)
     private Tax tax;
 
-    public Product() {
-    }
+    //valor del impuesto
+    @Column(name = "value_tax")
+    private Double valueTax;
+    private Double profit;
+    private Double price;
 
-    public Product(Date cretaedAt, Date updatedAt, String name, Category category, Double amount,
-                   Units unit, Double cost, Double price, Double profit, Tax tax) {
+    //Por defecto ya tiene el FETCH.EAGER para cargar automáticamente la entidad relacionada
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
+
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
+    private Supplier supplier;
+
+    //Entidad intermedia para la relación entre productos y ventas
+    @OneToMany(mappedBy = "product")
+    private List<SaleDetail> saleDetails;
+
+    //Entidad intermedia para la relación entre productos y compras
+    @OneToMany(mappedBy = "product")
+    private List<PurchaseDetail> purchaseDetails;
+
+    public Product(Date cretaedAt, Date updatedAt, boolean state, String code, String name, Category category,
+                   Double stock, Units unit, Double cost, Tax tax, Double valueTax, Double profit, Double price) {
         this.cretaedAt = cretaedAt;
         this.updatedAt = updatedAt;
+        this.state = state;
+        this.code = code;
         this.name = name;
         this.category = category;
-        this.amount = amount;
+        this.stock = stock;
         this.unit = unit;
         this.cost = cost;
-        this.price = price;
-        this.profit = profit;
         this.tax = tax;
-    }
-
-    // Getters and setters...
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Date getCretaedAt() {
-        return cretaedAt;
-    }
-
-    public void setCretaedAt(Date cretaedAt) {
-        this.cretaedAt = cretaedAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public Units getUnit() {
-        return unit;
-    }
-
-    public void setUnit(Units unit) {
-        this.unit = unit;
-    }
-
-    public Double getCost() {
-        return cost;
-    }
-
-    public void setCost(Double cost) {
-        this.cost = cost;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Double getProfit() {
-        return profit;
-    }
-
-    public void setProfit(Double profit) {
+        this.valueTax = valueTax;
         this.profit = profit;
-    }
-
-    public Tax getTax() {
-        return tax;
-    }
-
-    public void setTax(Tax tax) {
-        this.tax = tax;
+        this.price = price;
     }
 }

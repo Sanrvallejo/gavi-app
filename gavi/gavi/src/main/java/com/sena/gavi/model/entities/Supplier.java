@@ -1,49 +1,41 @@
 package com.sena.gavi.model.entities;
 
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "suppliers")
 public class Supplier {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "BINARY(16)")
     private String id;
+
     private String name;
     private String nit;
     private String city;
 
-    public Supplier() {
-    }
+    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
+    private List<Product> products;
+
+    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
+    private List<PurchaseDetail> purchasesdetails;
+
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
 
     public Supplier(String name, String nit, String city) {
         this.name = name;
         this.nit = nit;
-        this.city = city;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getNit() {
-        return nit;
-    }
-
-    public void setNit(String nit) {
-        this.nit = nit;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
         this.city = city;
     }
 }

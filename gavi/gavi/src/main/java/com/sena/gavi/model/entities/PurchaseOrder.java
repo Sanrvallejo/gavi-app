@@ -1,72 +1,53 @@
 package com.sena.gavi.model.entities;
 
-import java.util.Date;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import java.util.Date;
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "purchase_orders")
 public class PurchaseOrder {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "BINARY(16)")
     private String id;
+
+    //para almacenar la fecha usamos Temporal para especificar a JPA el tipo de fecha almacenada
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", nullable = false)
     private Date createdAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at", nullable = true)
     private Date updatedAt;
+
     private String code;
     private Double subtotal;
     private Double taxes;
     private Double total;
 
-    public PurchaseOrder() {
-    }
+    @OneToMany(mappedBy = "purchaseDetail")
+    private List<PurchaseDetail> purchasesDetails;
 
-    public String getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
+    public PurchaseOrder(Date createdAt, Date updatedAt, String code, Double subtotal, Double taxes, Double total) {
         this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
         this.code = code;
-    }
-
-    public Double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
-    }
-
-    public Double getTaxes() {
-        return taxes;
-    }
-
-    public void setTaxes(Double taxes) {
         this.taxes = taxes;
-    }
-
-    public Double getTotal() {
-        return total;
-    }
-
-    public void setTotal(Double total) {
         this.total = total;
     }
+
+
 }

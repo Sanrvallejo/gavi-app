@@ -8,6 +8,6 @@ public enum Tax {
     private final double rate;
 
     Tax(Double rate) {
-    this.rate = rate;
+        this.rate = rate;
     }
 }

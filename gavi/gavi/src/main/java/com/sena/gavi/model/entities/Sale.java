@@ -1,74 +1,58 @@
 package com.sena.gavi.model.entities;
 
 import com.sena.gavi.enums.PaymentMethod;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "sales")
 public class Sale {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "BINARY(16)")
     private String id;
-    private Date createdAt;
+
+    /*para almacenar la fecha usamos Temporal para especificar a JPA el tipo de fecha almacenada
+    elegiimos TIMESTAMP para almacenar fecha y hora */
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at", nullable = false)
+    private Date cretaedAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "updated_at", nullable = true)
     private Date updatedAt;
+
+    //Código de venta único (código de factura)
     private String code;
+
+    @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
+
     private Double subtotal;
     private String total;
 
-    public Sale() {
-    }
+    @OneToMany(mappedBy = "sale")
+    private List<SaleDetail> salesDetails;
 
-    public String getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
+    public Sale(Date cretaedAt, Date updatedAt, String code, PaymentMethod paymentMethod,
+                Double subtotal, String total) {
+        this.cretaedAt = cretaedAt;
         this.updatedAt = updatedAt;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
         this.code = code;
-    }
-
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
         this.paymentMethod = paymentMethod;
-    }
-
-    public Double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
-    }
-
-    public String getTotal() {
-        return total;
-    }
-
-    public void setTotal(String total) {
         this.total = total;
     }
 }

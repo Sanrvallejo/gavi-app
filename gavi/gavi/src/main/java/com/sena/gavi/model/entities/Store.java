@@ -1,43 +1,43 @@
 package com.sena.gavi.model.entities;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "stores")
 public class Store {
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "BINARY(16)")
     private String id;
+
     private String name;
     private String nit;
     private String address;
+    private String phoneNumber;
 
-    public Store() {
-    }
+    //CascadeType.ALL nos servirá para afectar los cambios del padre en los hijos
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<UsersInStore> users;
 
-    public String getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Product> products;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Sale> sales;
 
-    public String getName() {
-        return name;
-    }
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<PurchaseOrder> purchases;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    private List<Supplier> suppliers;
 
-    public String getNit() {
-        return nit;
-    }
 
-    public void setNit(String nit) {
-        this.nit = nit;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }
