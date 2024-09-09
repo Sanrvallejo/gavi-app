@@ -1,0 +1,48 @@
+<div th:fragment="menu-nav">
+  <!--Fragment: menu side -->
+  <div class="menu-container">
+    <img th:src="@{/imgs/main_logo_menu.png}" alt="main logo" class="main-logo">
+    <ul class="menu-options">
+      <li class="menu-item"><span class="material-symbols-rounded">
+          manage_accounts
+        </span>Cuenta</li>
+      <li class="menu-item"><span class="material-symbols-rounded">
+          group_add
+        </span>Personal</li>
+      <li class="menu-item"><span class="material-symbols-rounded">
+          store
+        </span>Mis tiendas</li>
+      <li class="menu-item"><span class="material-symbols-rounded">
+          inventory
+        </span><a th:href="@{/products}">Inventario</a></li>
+      <li class="menu-item"><span class="material-symbols-rounded">
+          currency_exchange
+        </span><a href="#">Ventas</a></li>
+      <li class="menu-item"><span class="material-symbols-rounded">
+          sync_alt
+        </span>Devoluciones</li>
+      <li class="menu-item"><span class="material-symbols-rounded">
+          calculate
+        </span>Egresos</li>
+      <li class="menu-item"><span class="material-symbols-rounded">
+          local_shipping
+        </span>Proveedores</li>
+      <li class="menu-item"><span class="material-symbols-rounded">
+          settings
+        </span>Configuración</li>
+    </ul>
+    <div class="menu-footer">
+      <img th:src="@{/imgs/main_logo_menu.png}" alt="secundary logo" class="secundary-logo">
+      <p>Todos los derechos reservados a Lancer Soft.</p>
+    </div>
+  </div>
+
+  <!-- Fragmet: navbar-->
+  <nav class="nav-bar">
+    <h1>Inventario</h1>
+    <div class="nav-icons">
+      <span class="material-symbols-rounded">home</span>
+      <span class="material-symbols-rounded">login</span>
+    </div>
+  </nav>
+</div>

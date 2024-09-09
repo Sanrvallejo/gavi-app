@@ -1,0 +1,103 @@
+html {
+  font-size: 1rem;
+}
+
+body {
+  margin: 0;
+  padding: 5px;
+  font-family: "Roboto", system-ui;
+}
+
+.menu-container {
+  position: fixed; /*para que el menú no se pierda con el scroll*/
+  margin: 0;
+  width: 250px;
+  height: 96vh;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0df60d, #00cc00, #009900, #006600);
+  border-radius: 10px;
+  align-items: center;
+  color: aliceblue;
+}
+
+.main-logo {
+  width: auto;
+  height: 25px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  align-self: flex-start;
+}
+
+.menu-options {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.menu-item {
+  display: flex;
+  padding: 10px;
+  text-align: left;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.menu-item .material-symbols-rounded {
+  margin-right: 10px;
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.menu-footer {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.secundary-logo {
+  width: 60px;
+  height: auto;
+}
+
+.menu-footer p {
+  font-size: 0.6rem;
+}
+
+nav {
+  margin-left: 275px;
+  margin-right: 5px;
+  margin-top: 0px;
+  background: linear-gradient(to right, #0df60d, #00cc00);
+  border-radius: 10px;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: aliceblue;
+}
+
+nav h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.nav-icons {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-icons .material-symbols-rounded:hover {
+  color: rgb(255, 255, 255, 0.5)
+}
