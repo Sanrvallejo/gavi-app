@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
@@ -17,8 +18,8 @@ import java.util.List;
 public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(columnDefinition = "BINARY(16)")
-    private String id;
+    @Column(columnDefinition = "UUID")
+    private UUID id;
 
     /*para almacenar la fecha usamos Temporal para especificar a JPA el tipo de fecha almacenada
     elegiimos TIMESTAMP para almacenar fecha y hora */
