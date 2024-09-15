@@ -4,17 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/fragments-style.css}">
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link rel="stylesheet"
-          th:href="@{https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap}">
+    th:href="@{https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap}">
     <link rel="stylesheet"
-          th:href="@{https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0}" />
+    th:href="@{https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0}" />
 
+    <link rel="stylesheet" th:href="@{/css/fragments-style.css}">
+    <link rel="stylesheet" th:href="@{/css/show-products.css}">
     <title>Gavi Pro</title>
 </head>
 <body>
+    <div th:insert="fragments.html::header"></div>
     <div th:insert="fragments.html::menu-nav"></div>
+
+    <main>
+        <section class="btns-main">
+            <button class="btn-actions"><span class="material-symbols-rounded">
+        list_alt
+        </span>Show products</button>
+            <button class="btn-actions"><span class="material-symbols-rounded">
+        add_circle
+        </span>Create a product</button>
+            <button class="btn-actions"><span class="material-symbols-rounded">
+        unarchive
+        </span>Make an order</button>
+        </section>
+
+        <hr>
+    </main>
+
+    <script th:src="@{/scripts/fragment-script.js}"></script>
 </body>
 </html>

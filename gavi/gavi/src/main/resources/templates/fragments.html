@@ -1,8 +1,17 @@
-<div th:fragment="menu-nav">
+<header th:fragment="header">
+    <h1>Inventary</h1>
+    <div class="header-icons">
+        <span class="material-symbols-rounded">home</span>
+        <span class="material-symbols-rounded">login</span>
+    </div>
+</header>
+
+
+<nav th:fragment="menu-nav">
   <!--Fragment: menu side -->
   <div class="menu-container">
-    <img th:src="@{/imgs/main_logo_menu.png}" alt="main logo" class="main-logo">
-    <ul class="menu-options">
+    <img id="primary-logo" th:src="@{/imgs/main_logo_menu.png}" alt="primary-logo">
+    <ul class="menu-list">
       <li class="menu-item"><span class="material-symbols-rounded">
           manage_accounts
         </span>Cuenta</li>
@@ -14,10 +23,10 @@
         </span>Mis tiendas</li>
       <li class="menu-item"><span class="material-symbols-rounded">
           inventory
-        </span><a th:href="@{/products}">Inventario</a></li>
+        </span><a class="menu-link" th:href="@{/products}">Inventario</a></li>
       <li class="menu-item"><span class="material-symbols-rounded">
           currency_exchange
-        </span><a href="#">Ventas</a></li>
+        </span><a class="menu-link" href="#">Ventas</a></li>
       <li class="menu-item"><span class="material-symbols-rounded">
           sync_alt
         </span>Devoluciones</li>
@@ -31,18 +40,15 @@
           settings
         </span>Configuración</li>
     </ul>
-    <div class="menu-footer">
-      <img th:src="@{/imgs/main_logo_menu.png}" alt="secundary logo" class="secundary-logo">
-      <p>Todos los derechos reservados a Lancer Soft.</p>
+
+    <div class="nav-footer">
+        <img src="imgs/main_logo_menu.png" alt="secondary-logo" srcset="">
+        <p>Todos los derechos reservados a Lancer Company</p>
     </div>
   </div>
+</nav>
 
-  <!-- Fragmet: navbar-->
-  <nav class="nav-bar">
-    <h1>Inventario</h1>
-    <div class="nav-icons">
-      <span class="material-symbols-rounded">home</span>
-      <span class="material-symbols-rounded">login</span>
-    </div>
-  </nav>
-</div>
+
+
+
+

@@ -1,0 +1,38 @@
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.btns-main {
+    width: 100%;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 15px;
+}
+
+.btn-actions {
+    width: 90px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: white;
+    border: 2px solid #009900;
+    font-size: 0.8rem;
+    color: #015c01;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.btn-actions:hover {
+    background-color: rgba(15, 47, 15, 0.404);
+}
+
+.btn-actions span {
+    font-size: 2rem;
+}
