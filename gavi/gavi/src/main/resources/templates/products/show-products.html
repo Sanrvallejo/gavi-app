@@ -33,6 +33,23 @@
         </section>
 
         <hr>
+
+        <section class="search-product">
+            <h4>Search products</h4>
+            <form class="form-search">
+                <div class="search-input">
+                    <label for="product-code">Product code</label>
+                    <input type="text" id="product-code" name="product-code" required>
+                </div>
+                <form class="form-search">
+                    <div class="search-input">
+                        <label for="product-name">Product name</label>
+                        <input type="text" id="product-name" name="product-name" required>
+                    </div>
+
+                    <input type="button" value="Search">
+                </form>
+        </section>
     </main>
 
     <script th:src="@{/scripts/fragment-script.js}"></script>
