@@ -85,3 +85,36 @@ input[type="button"] {
 input[type="button"]:hover {
     background-color: #1e739c;
 }
+
+.product-list {
+    width: 96%;
+    border-radius: 5px;
+    background-color: white;
+    justify-self: left !important;
+    overflow: auto;
+}
+
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+    font-size: 0.9rem;
+}
+
+th, td {
+    width: max-content;
+    padding: 10px 30px 10px 10px;
+    text-align: left;
+}
+
+thead {
+    background-color: #c1d1c1;
+}
+
+td {
+    background-color: white;
+}
+
+tr:nth-child(even) td {
+    background-color: #f0f0f0;
+}
