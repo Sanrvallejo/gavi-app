@@ -5,6 +5,10 @@
   text-decoration: none;
 }
 
+html {
+  font-size: 14px;
+}
+
 body{
   font-size: 100%;
   list-style-type: none;
