@@ -21,15 +21,18 @@
 
     <main>
         <section class="btns-main">
-            <button class="btn-actions"><span class="material-symbols-rounded">
-        list_alt
-        </span>Show products</button>
-            <button class="btn-actions"><span class="material-symbols-rounded">
-        add_circle
-        </span>Create a product</button>
-            <button class="btn-actions"><span class="material-symbols-rounded">
-        unarchive
-        </span>Make an order</button>
+            <a th:href="@{products}" class="btn-actions">
+                <span class="material-symbols-rounded">list_alt</span>
+                Show products
+            </a>
+            <a class="btn-actions">
+                <span class="material-symbols-rounded">add_circle</span>
+                Create a product
+            </a>
+            <a class="btn-actions">
+                <span class="material-symbols-rounded">unarchive</span>
+                Make an order
+            </a>
         </section>
 
         <hr>
@@ -54,53 +57,38 @@
         <section class="product-list">
             <table class="product-table">
                 <thead>
-                <tr>
-                    <th>Created at</th>
-                    <th>Updated at</th>
-                    <th>Code</th>
-                    <th>Product name</th>
-                    <th>Category</th>
-                    <th>Unit</th>
-                    <th>Stock</th>
-                    <th>Tax</th>
-                    <th>Tax value</th>
-                    <th>Cost</th>
-                    <th>Price</th>
-                    <th>Profit</th>
-                    <th>Actions</th>
-                </tr>
+                    <tr>
+                        <th>Created at</th>
+                        <th>Updated at</th>
+                        <th>Code</th>
+                        <th>Product name</th>
+                        <th>Category</th>
+                        <th>Unit</th>
+                        <th>Stock</th>
+                        <th>Tax</th>
+                        <th>Tax value</th>
+                        <th>Cost</th>
+                        <th>Price</th>
+                        <th>Profit</th>
+                        <th>Actions</th>
+                    </tr>
                 </thead>
                 <body>
-                <tr>
-                    <td>09/05/2024</td>
-                    <td>11/09/2024</td>
-                    <td>123456</td>
-                    <td>PAPA CAPIRA SIN LAVAR</td>
-                    <td>VERDURAS</td>
-                    <td>KG</td>
-                    <td>23.9</td>
-                    <td>SINIVA</td>
-                    <td>0</td>
-                    <td>990.0</td>
-                    <td>1250.0</td>
-                    <td>350.0</td>
-                    <td>Eliminar y borrar</td>
-                </tr>
-                <tr>
-                    <td>09/05/2024</td>
-                    <td>11/09/2024</td>
-                    <td>123456</td>
-                    <td>PAPA CAPIRA SIN LAVAR CON MAS TEXTO</td>
-                    <td>VERDURAS</td>
-                    <td>KG</td>
-                    <td>23.9</td>
-                    <td>SINIVA</td>
-                    <td>0</td>
-                    <td>990.0</td>
-                    <td>1250.0</td>
-                    <td>350.0</td>
-                    <td>Eliminar y borrar</td>
-                </tr>
+                    <tr th:each="product: ${productslist}">
+                        <td th:text="${product.cretaedAt}"></td>
+                        <td th:text="${product.updatedAt}"></td>
+                        <td th:text="${product.code}"></td>
+                        <td th:text="${product.name}"></td>
+                        <td th:text="${product.category}"></td>
+                        <td th:text="${product.unit}"></td>
+                        <td th:text="${product.stock}"></td>
+                        <td th:text="${product.tax}"></td>
+                        <td th:text="${product.valueTax}"></td>
+                        <td th:text="${product.cost}"></td>
+                        <td th:text="${product.price}"></td>
+                        <td th:text="${product.profit}"></td>
+                        <td>Acciones</td>
+                    </tr>
                 </body>
             </table>
         </section>
