@@ -33,15 +33,21 @@ public class Product {
     @Column(name = "updated_at", nullable = true)
     private Date updatedAt;
 
-    //estado del produto para cuando se lo elimine
+    //estado del produto para cuando se lo elimine -> por defecto activo cuando es creado
+    @Column(columnDefinition = "BOOLEAN DEFAULT true")
     private boolean state;
+
     //código único para el producto (puede ser el código de barras)
+    @Column(unique=true)
     private String code;
+
     private String name;
 
     @Enumerated(EnumType.STRING)
     private Category category;
 
+    //por defecto es 0.0 cuando se crea el producto
+    @Column(columnDefinition = "DOUBLE PRECISION DEFAULT 0.0")
     private Double stock;
 
     //medida en la que se guardará y venderá el producto
@@ -62,11 +68,11 @@ public class Product {
 
     //Por defecto ya tiene el FETCH.EAGER para cargar automáticamente la entidad relacionada
     @ManyToOne
-    @JoinColumn(name = "store_id")
+    @JoinColumn(name = "store_id", nullable = true)
     private Store store;
 
     @ManyToOne
-    @JoinColumn(name = "supplier_id")
+    @JoinColumn(name = "supplier_id", nullable = true)
     private Supplier supplier;
 
     //Entidad intermedia para la relación entre productos y ventas
