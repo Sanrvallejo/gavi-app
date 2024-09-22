@@ -1,5 +1,5 @@
 <header th:fragment="header">
-    <h1>Inventary</h1>
+    <h1 th:text="${nameHeader}"></h1>
     <div class="header-icons">
         <span class="material-symbols-rounded">home</span>
         <span class="material-symbols-rounded">login</span>
@@ -14,35 +14,35 @@
     <ul class="menu-list">
       <li class="menu-item"><span class="material-symbols-rounded">
           manage_accounts
-        </span>Cuenta</li>
+        </span>Account</li>
       <li class="menu-item"><span class="material-symbols-rounded">
           group_add
-        </span>Personal</li>
+        </span>Employees</li>
       <li class="menu-item"><span class="material-symbols-rounded">
           store
-        </span>Mis tiendas</li>
+        </span>My stores</li>
       <li class="menu-item"><span class="material-symbols-rounded">
           inventory
-        </span><a class="menu-link" th:href="@{products}">Inventario</a></li>
+        </span><a class="menu-link" th:href="@{/products}">Inventory</a></li>
       <li class="menu-item"><span class="material-symbols-rounded">
           currency_exchange
-        </span><a class="menu-link" href="#">Ventas</a></li>
+        </span><a class="menu-link" href="#">Sales</a></li>
       <li class="menu-item"><span class="material-symbols-rounded">
           sync_alt
-        </span>Devoluciones</li>
+        </span>Returns</li>
       <li class="menu-item"><span class="material-symbols-rounded">
           calculate
-        </span>Egresos</li>
+        </span>Expenses</li>
       <li class="menu-item"><span class="material-symbols-rounded">
           local_shipping
-        </span>Proveedores</li>
+        </span>Suppliers</li>
       <li class="menu-item"><span class="material-symbols-rounded">
           settings
-        </span>Configuración</li>
+        </span>Settings</li>
     </ul>
 
     <div class="nav-footer">
-        <img src="imgs/main_logo_menu.png" alt="secondary-logo" srcset="">
+        <img th:src="@{/imgs/main_logo_menu.png}" alt="secondary-logo">
         <p>Todos los derechos reservados a Lancer Company</p>
     </div>
   </div>

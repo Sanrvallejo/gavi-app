@@ -5,7 +5,7 @@ import com.sena.gavi.model.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +17,12 @@ public class ProductServiceImpl implements IProductService {
 
     @Override
     public Product save(Product product) {
-        return productRepository.save(product);
+            product.setCretaedAt(new Date());
+            product.setUpdatedAt(new Date());
+            product.setState(true);
+            product.setStock(0.0);
+            System.out.println("Product:" + product);
+            return productRepository.save(product);
     }
 
     @Override

@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" th:href="@{/css/fragments-style.css}">
     <link rel="stylesheet" th:href="@{/css/show-products.css}">
+    <link rel="icon" th:href="@{/imgs/logo_gavi.png}" type="image/x-icon">
     <title>Gavi Pro</title>
 </head>
 <body>
@@ -21,7 +22,7 @@
 
     <main>
         <section class="btns-main">
-            <a th:href="@{products}" class="btn-actions">
+            <a th:href="@{/products}" class="btn-actions">
                 <span class="material-symbols-rounded">list_alt</span>
                 Show products
             </a>
@@ -36,6 +37,10 @@
         </section>
 
         <hr>
+
+        <div th:if="${message}" class="alert" th:classappend="${alertClass}">
+            <p th:text="${message}"></p>
+        </div>
 
         <section class="search-product">
             <h4>Search products</h4>
@@ -94,6 +99,7 @@
         </section>
     </main>
 
+    <script th:src="@{/scripts/products.js}"></script>
     <script th:src="@{/scripts/fragment-script.js}"></script>
 </body>
 </html>

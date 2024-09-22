@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" th:href="@{/css/fragments-style.css}">
     <link rel="stylesheet" th:href="@{/css/create-product.css}">
-
+    <link rel="icon" th:href="@{/imgs/logo_gavi.png}" type="image/x-icon">
     <title>Gavi Pro</title>
 </head>
 
@@ -23,7 +23,7 @@
 
     <main>
         <section class="btns-main">
-            <a th:href="@{products}" class="btn-actions">
+            <a th:href="@{/products}" class="btn-actions">
                 <span class="material-symbols-rounded">list_alt</span>Show products
             </a>
             <a th:href="@{/products/create-product}" class="btn-actions">
@@ -38,21 +38,21 @@
 
         <section class="create-product">
             <h2>Create a new product</h2>
-            <form action="">
+            <form th:action="@{/products/save-product}" method="post">
                 <div class="form-container">
                     <article id="basic-data">
                         <h3>Basic data</h3>
                         <div class="form-group">
                             <label for="product-code">Code:</label>
-                            <input type="text" id="product-code" name="product-code" required>
+                            <input type="text" id="product-code" name="code" required>
                         </div>
                         <div class="form-group">
                             <label for="product-name">Name:</label>
-                            <input type="text" id="product-name" name="product-name" required>
+                            <input type="text" id="product-name" name="name" required>
                         </div>
                         <div class="form-group">
                             <label for="product-category">Category:</label>
-                            <select name="product-category" id="product-category">
+                            <select name="category" id="product-category">
                                 <option value="" disabled selected>Select a category</option>
                                 <option th:each="category: ${categories}"
                                         th:value="${category}"
@@ -62,7 +62,7 @@
                         </div>
                         <div class="form-group">
                             <label for="product-unit">Unit:</label>
-                            <select name="product-unit" id="product-unit">
+                            <select name="unit" id="product-unit">
                                 <option value="" disabled selected>Select an unit</option>
                                 <option th:each="unit: ${units}"
                                         th:value="${unit}"
@@ -72,7 +72,7 @@
                         </div>
                         <div class="form-group">
                             <label for="product-supplier">Supplier:</label>
-                            <select name="product-supplier" id="product-supplier">
+                            <select name="supplier" id="product-supplier">
                                 <option value="" disabled selected>Select a supplier</option>
                                 <option>Opcion 1</option>
                                 <option>Opcion 2</option>
@@ -85,39 +85,41 @@
                         <h3>Values</h3>
                         <div class="form-group">
                             <label for="product-cost">Cost:</label>
-                            <input type="number" id="product-cost" name="product-cost" required>
+                            <input type="number" id="product-cost" name="cost" required>
                         </div>
                         <div class="form-group">
                             <label for="product-taxes">Taxes:</label>
-                            <select name="product-taxes" id="product-taxes">
+                            <select name="tax" id="product-taxes">
                                 <option value="" disabled selected>Select a tax</option>
                                 <option th:each="tax: ${taxes}"
-                                        th:value="${tax}"
-                                        th:text="${tax}">
+                                        th:value="${tax.name()}"
+                                        th:data-rate="${tax.getRate()}"
+                                        th:text="${tax.name()}">
                                 </option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="product-tax-value">Tax:</label>
-                            <input type="number" id="product-tax-value" name="product-tax-value" required>
+                            <input type="number" id="product-tax-value" name="valueTax" readonly>
                         </div>
                         <div class="form-group">
                             <label for="product-profit">Profit:</label>
-                            <input type="number" id="product-profit" name="product-profit" required>
+                            <input type="number" id="product-profit" name="profit" required>
                         </div>
                         <div class="form-group">
                             <label for="product-price">Price:</label>
-                            <input type="number" id="product-price" name="product-price" required>
+                            <input type="number" id="product-price" name="price" required>
                         </div>
                     </article>
                 </div>
 
-                <input id="btn-send" type="button" value="Send">
+                <input id="btn-send" type="submit" value="Send">
                 <input id="btn-clean" type="button" value="Clean">
             </form>
         </section>
     </main>
 
+    <script th:src="@{/scripts/products.js}"></script>
     <script th:src="@{/scripts/fragment-script.js}"></script>
 </body>
 
