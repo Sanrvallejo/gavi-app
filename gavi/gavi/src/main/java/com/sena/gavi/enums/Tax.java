@@ -10,4 +10,8 @@ public enum Tax {
     Tax(Double rate) {
         this.rate = rate;
     }
+
+    public double getRate() {
+        return rate;
+    }
 }
