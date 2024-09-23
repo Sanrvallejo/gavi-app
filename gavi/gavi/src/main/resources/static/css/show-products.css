@@ -88,3 +88,30 @@ tr:nth-child(even) td {
     border: #858585 1px solid;
     border-radius: 5px;
 }
+
+.btn-td {
+    width: 25px;
+    height: 25px;
+    margin: 2px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.edit-btn {
+    background-color: #248bca;
+}
+
+.remove-btn {
+    background-color: #b82b2b;
+}
+
+.edit-btn:hover {
+    background-color: #1e739c;
+}
+
+.remove-btn:hover {
+    background-color: #9d2424;
+}
