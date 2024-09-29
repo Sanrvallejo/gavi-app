@@ -5,23 +5,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputTaxValue = document.querySelector('#product-tax-value');
     const profit = document.querySelector('#product-profit');
     const price = document.querySelector('#product-price');
+    const calculateValues = document.querySelectorAll('.calculate-values')
+
+    //para detectar cual input es el que hace el cambio y atualizar el precio
+    calculateValues.forEach(input => {
+        input.addEventListener('input', () => {
+            calculatePrice();
+        })
+    })
+
+    //para que cuando el select cambie de impuesto se calcule nuevamente el precio
+    calculateValues.forEach(select => {
+        select.addEventListener('change', () => {
+            calculatePrice();
+        })
+    })
 
     //calcular impuestos, ganancia y precio total
-    taxOption.addEventListener('change', (e) => {
+    function calculatePrice() {
         const taxSelected = taxOption.options[taxOption.selectedIndex];
-        const taxRate = parseFloat(taxSelected.getAttribute('data-rate')); //se tare el atributo personalizado data-rate del HTML que contiene la tasa del impuesto
-        const taxValue = parseFloat(cost.value) * taxRate;
+        const taxRate = parseFloat(taxSelected.getAttribute('data-rate'));
+        const taxValue = parseFloat(cost.value) * taxRate;//calcular el impuesto
 
-        //agregar el valor del impuesto al input tax
-        inputTaxValue.value = taxValue.toFixed(2); //para solo tener dos decimales
-    })
+        //imprimir el impuesto en el input
+        inputTaxValue.value = taxValue.toFixed(2); //redondear a 2 decimales
 
-    //calcular precio automático
-    profit.addEventListener('input', (e) => {
-        e.preventDefault();
+        //para guardar el precio calculado
         const priceValue = parseFloat(cost.value) + parseFloat(inputTaxValue.value) + parseFloat(profit.value);
-        price.value = priceValue.toFixed(2); //redondea al segundo decimal
-    })
+        price.value = priceValue.toFixed(2);
+    }
 })
 
 //resetear el formulario
@@ -42,3 +54,5 @@ setTimeout(function() {
         alert.style.display = 'none';
     }
 }, 5000);
+
+//llenar el formulario de editar producto automaticamente
