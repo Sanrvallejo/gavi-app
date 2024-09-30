@@ -81,7 +81,7 @@ tr:nth-child(even) td {
 }
 
 .alert {
-    width: 100%;
+    width: 95%;
     padding: 20px;
     margin: 20px 10px;
     background: #ccc;
@@ -89,8 +89,12 @@ tr:nth-child(even) td {
     border-radius: 5px;
 }
 
+.alert-success {
+    background-color: rgba(34, 170, 70, 0.68);
+}
+
 .alert-danger {
-    background-color: #9d2424;
+    background-color: rgba(157, 36, 36, 0.69);
 }
 
 .btn-td {
