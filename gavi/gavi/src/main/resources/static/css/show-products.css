@@ -69,6 +69,8 @@ th, td {
 }
 
 thead {
+    position: sticky;
+    top: 0;
     background-color: #c1d1c1;
 }
 
@@ -79,6 +81,7 @@ td {
 tr:nth-child(even) td {
     background-color: #f0f0f0;
 }
+
 
 .alert {
     width: 95%;
