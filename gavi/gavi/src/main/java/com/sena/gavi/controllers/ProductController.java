@@ -94,6 +94,27 @@ public class ProductController {
         return "admin/edit-product";
     }
 
+    @PostMapping("/update-product/{id}")
+    public String updateProduct(
+            @PathVariable UUID id,
+            @ModelAttribute Product incomingProduct,
+            RedirectAttributes redirectAttributes) {
 
+        //aquí se verifica que el producto exista
+        Optional<Product> optionalProduct = productService.getProduct(id);
+        Product foundProduct = optionalProduct.get();
+
+        //delegar la actualización al servicio
+        try {
+            productService.update(incomingProduct, foundProduct);
+            redirectAttributes.addFlashAttribute("message", "Product updated successfully");
+            redirectAttributes.addFlashAttribute("alertClass", "alert-success");
+            return "redirect:/products";
+        }catch (Exception e) {
+            redirectAttributes.addFlashAttribute("message", "Error updating product");
+            redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
+            return "redirect:/products";
+        }
+    }
 
 }

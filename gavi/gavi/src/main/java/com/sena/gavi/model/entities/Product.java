@@ -54,7 +54,7 @@ public class Product {
     private Category category;
 
     //por defecto es 0.0 cuando se crea el producto
-    @Column(columnDefinition = "DOUBLE PRECISION DEFAULT 0.0")
+    @Column(columnDefinition = "DOUBLE PRECISION")
     @ToString.Include
     private Double stock;
 

@@ -11,5 +11,5 @@ public interface IProductService {
     Optional<Product> getProduct(UUID id);
     Optional<Product> getByCode(String code);
     List<Product> getAllProducts();
-    void update(Product product);
+    void update(Product incomingProduct, Product foundProduct);
 }
