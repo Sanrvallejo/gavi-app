@@ -69,6 +69,8 @@ th, td {
 }
 
 thead {
+    position: sticky;
+    top: 0;
     background-color: #c1d1c1;
 }
 
@@ -80,11 +82,47 @@ tr:nth-child(even) td {
     background-color: #f0f0f0;
 }
 
+
 .alert {
-    width: 100%;
+    width: 95%;
     padding: 20px;
     margin: 20px 10px;
     background: #ccc;
     border: #858585 1px solid;
     border-radius: 5px;
+}
+
+.alert-success {
+    background-color: rgba(34, 170, 70, 0.68);
+}
+
+.alert-danger {
+    background-color: rgba(157, 36, 36, 0.69);
+}
+
+.btn-td {
+    width: 25px;
+    height: 25px;
+    margin: 2px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.edit-btn {
+    background-color: #248bca;
+}
+
+.remove-btn {
+    background-color: #b82b2b;
+}
+
+.edit-btn:hover {
+    background-color: #1e739c;
+}
+
+.remove-btn:hover {
+    background-color: #9d2424;
 }

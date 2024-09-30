@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.Date;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "products")
 public class Product {
@@ -27,10 +29,12 @@ public class Product {
     //para almacenar la fecha usamos Temporal para especificar a JPA el tipo de fecha almacenada
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at", nullable = false)
+    @ToString.Include
     private Date cretaedAt;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at", nullable = true)
+    @ToString.Include
     private Date updatedAt;
 
     //estado del produto para cuando se lo elimine -> por defecto activo cuando es creado
@@ -39,31 +43,43 @@ public class Product {
 
     //código único para el producto (puede ser el código de barras)
     @Column(unique=true)
+    @ToString.Include
     private String code;
 
+    @ToString.Include
     private String name;
 
     @Enumerated(EnumType.STRING)
+    @ToString.Include
     private Category category;
 
     //por defecto es 0.0 cuando se crea el producto
-    @Column(columnDefinition = "DOUBLE PRECISION DEFAULT 0.0")
+    @Column(columnDefinition = "DOUBLE PRECISION")
+    @ToString.Include
     private Double stock;
 
     //medida en la que se guardará y venderá el producto
     @Enumerated(EnumType.STRING)
+    @ToString.Include
     private Units unit;
 
+    @ToString.Include
     private Double cost;
 
     //tipo de impuesto que paga
     @Enumerated(EnumType.STRING)
+    @ToString.Include
     private Tax tax;
 
     //valor del impuesto
     @Column(name = "value_tax")
+    @ToString.Include
     private Double valueTax;
+
+    @ToString.Include
     private Double profit;
+
+    @ToString.Include
     private Double price;
 
     //Por defecto ya tiene el FETCH.EAGER para cargar automáticamente la entidad relacionada
