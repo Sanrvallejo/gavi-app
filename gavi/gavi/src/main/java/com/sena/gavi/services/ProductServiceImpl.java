@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ProductServiceImpl implements IProductService {
@@ -26,8 +27,13 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
-    public Optional<Product> getProduct(String id) {
+    public Optional<Product> getProduct(UUID id) {
         return productRepository.findById(id);
+    }
+
+    @Override
+    public Optional<Product> getByCode(String code) {
+        return productRepository.getByCode(code);
     }
 
     @Override

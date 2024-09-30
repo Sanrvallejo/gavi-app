@@ -65,6 +65,7 @@ label {
   font-weight: 400;
 }
 
+input[type="submit"],
 input[type="button"] {
   width: 100px;
   padding: 10px;

@@ -35,18 +35,18 @@
     <hr>
 
     <section class="create-product">
-      <h2>Create a new product</h2>
+      <h2>Edit a new product</h2>
       <form th:action="@{/products/save-product}" method="post">
         <div class="form-container">
           <article id="basic-data">
             <h3>Basic data</h3>
             <div class="form-group">
               <label for="product-code">Code:</label>
-              <input type="text" id="product-code" name="code" required>
+              <input type="text" id="product-code" name="code" th:value="${product.code}">
             </div>
             <div class="form-group">
               <label for="product-name">Name:</label>
-              <input type="text" id="product-name" name="name" required>
+              <input type="text" id="product-name" name="name" th:value="${product.name}">
             </div>
             <div class="form-group">
               <label for="product-category">Category:</label>
@@ -54,7 +54,8 @@
                 <option value="" disabled selected>Select a category</option>
                 <option th:each="category: ${categories}"
                         th:value="${category}"
-                        th:text="${category}">
+                        th:text="${category}"
+                        th:selected="${category} == ${product.category}">
                 </option>
               </select>
             </div>
@@ -64,7 +65,8 @@
                 <option value="" disabled selected>Select an unit</option>
                 <option th:each="unit: ${units}"
                         th:value="${unit}"
-                        th:text="${unit}">
+                        th:text="${unit}"
+                        th:selected="${unit} == ${product.unit}">
                 </option>
               </select>
             </div>
@@ -83,42 +85,44 @@
             <h3>Values</h3>
             <div class="form-group">
               <label for="product-cost">Cost:</label>
-              <input type="number" id="product-cost" name="cost" required>
+              <input type="number" class="calculate-values" id="product-cost" name="cost" th:value="${product.cost}">
             </div>
             <div class="form-group">
               <label for="product-taxes">Taxes:</label>
-              <select name="tax" id="product-taxes">
-                <option value="" disabled selected>Select a tax</option>
-                <option th:each="tax: ${taxes}"
-                        th:value="${tax.name()}"
-                        th:data-rate="${tax.getRate()}"
-                        th:text="${tax.name()}">
-                </option>
+              <select name="tax" class="calculate-values" id="product-taxes">
+              <option value="" disabled selected>Select a tax</option>
+              <option th:each="tax: ${taxes}"
+                      th:value="${tax.name()}"
+                      th:data-rate="${tax.getRate()}"
+                      th:text="${tax.name()}"
+                      th:selected="${tax} == ${product.tax}">
+              </option>
               </select>
             </div>
             <div class="form-group">
               <label for="product-tax-value">Tax:</label>
-              <input type="number" id="product-tax-value" name="valueTax" readonly>
+              <input type="number" class="calculate-values" id="product-tax-value" name="valueTax" th:value="${product.tax}">
             </div>
             <div class="form-group">
               <label for="product-profit">Profit:</label>
-              <input type="number" id="product-profit" name="profit" required>
+              <input type="number" class="calculate-values" id="product-profit" name="profit" th:value="${product.profit}">
             </div>
             <div class="form-group">
               <label for="product-price">Price:</label>
-              <input type="number" id="product-price" name="price" required>
+              <input type="number" class="calculate-values" id="product-price" name="price" th:value="${product.price}">
             </div>
           </article>
         </div>
 
-        <input id="btn-send" type="submit" value="Send">
+        <input id="btn-send" type="submit" value="Edit">
         <input id="btn-clean" type="button" value="Clean">
       </form>
     </section>
 
   </main>
 
-  <script src="scripts/script.js"></script>
+  <script th:src="@{/scripts/products.js}"></script>
+  <script th:src="@{/scripts/fragment-script.js}"></script>
 </body>
 
 </html>

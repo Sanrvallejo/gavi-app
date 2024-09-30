@@ -93,11 +93,11 @@
                         <td th:text="${product.price}"></td>
                         <td th:text="${product.profit}"></td>
                         <td>
-                            <a th:href="@{/products/edit/id (id = ${product.id})}">
-                                <span class="material-symbols-rounded btn-td">edit</span>
+                            <a class="btn-td edit-btn" th:href="@{/products/edit/{id} (id = ${product.id})}">
+                                <span class="material-symbols-rounded">edit</span>
                             </a>
-                            <a th:href="@{/products/remove/id (id = ${product.id})}">
-                                <span class="material-symbols-rounded btn-td">remove</span>
+                            <a class="btn-td remove-btn" th:href="@{/products/remove/{id} (id = ${product.id})}">
+                                <span class="material-symbols-rounded">remove</span>
                             </a>
                         </td>
                     </tr>
