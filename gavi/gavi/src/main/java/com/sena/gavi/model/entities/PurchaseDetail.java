@@ -22,13 +22,25 @@ public class PurchaseDetail {
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 
+    @Column(name = "name_supplier")
+    private String nameSupplier;
+
     @ManyToOne
     @JoinColumn(name = "purchase_id")
     private PurchaseOrder purchaseDetail;
 
+    @Column(name = "purchase_code")
+    private String purchaseCode;
+
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
+    @Column(name = "product_code")
+    private String productCode;
+
+    @Column(name = "product_name")
+    private String productName;
 
     private double quantity;
 

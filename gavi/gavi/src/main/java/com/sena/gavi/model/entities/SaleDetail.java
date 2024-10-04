@@ -22,9 +22,18 @@ public class SaleDetail {
     @JoinColumn(name = "sale_id")
     private Sale sale;
 
+    @Column(name = "sale_code")
+    private String saleCode;
+
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
+    @Column(name = "product_code")
+    private String codeProduct;
+
+    @Column(name = "product_name")
+    private String nameProduct;
 
     private Double quantity;
 
