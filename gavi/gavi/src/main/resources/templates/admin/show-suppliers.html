@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link rel="stylesheet"
+      th:href="@{https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap}">
+    <link rel="stylesheet"
+      th:href="@{https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0}" />
+    <link rel="stylesheet" th:href="@{/css/fragments-style.css}">
+    <link rel="stylesheet" th:href="@{/css/show-suppliers.css}">
+    <link rel="shortcut icon" th:href="@{/imgs/logo_gavi.png}" type="image/x-icon">
+    <title>Gavi Pro</title>
+</head>
+<body>
+
+    <!--Header-->
+    <div th:replace="fragments :: header"></div>
+    <!--Menu-->
+    <div th:replace="fragments :: menu-nav"></div>
+    
+      <!--main-->
+      <main>
+        <section class="btns-main">
+            <a href="suppliers.html" class="btn-actions"><span class="material-symbols-rounded">
+                list_alt
+              </span>Show suppliers</a>
+            <a href="create-supplier.html" class="btn-actions"><span class="material-symbols-rounded">
+                add_circle
+              </span>Create a supplier</a>
+          </section>
+      
+          <hr>
+
+          <section class="search-supplier">
+            <h4>Search suppliers</h4>
+            <form class="form-search">
+              <div class="search-input">
+                <label for="supplier-nit">Supplier nit</label>
+                <input type="text" id="supplier-nit" name="supplier-nit" required>
+              </div>
+              <form class="form-search">
+                <div class="search-input">
+                  <label for="supplier-name">Supplier name</label>
+                  <input type="text" id="supplier-name" name="supplier-name" required>
+                </div>
+      
+                <input type="button" value="Search">
+              </form>
+          </section>
+
+          <section class="supplier-list">
+            <table class="supplier-table">
+              <thead>
+                <tr>
+                  <th>Created at</th>
+                  <th>Updated at</th>
+                  <th>Nit</th>
+                  <th>Supplier name</th>
+                  <th>City</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+      
+              <body>
+                <tr>
+                  <td>09/05/2024</td>
+                  <td>11/09/2024</td>
+                  <td>123456</td>
+                  <td>RAPIDISTRIBUIDORA</td>
+                  <td>CALI</td>
+                  <td>Eliminar y borrar</td>
+                </tr>
+                <tr>
+                  <td>09/05/2024</td>
+                  <td>11/09/2024</td>
+                  <td>123456</td>
+                  <td>DISTRIBUIDORA YUPI</td>
+                  <td>BOGOTÁ</td>
+                  <td>Eliminar y borrar</td>
+                </tr>
+              </body>
+            </table>
+          </section>
+
+
+      </main>
+    
+      <script th:src="@{/scripts/fragment-script.js}"></script>
+</body>
+</html>
