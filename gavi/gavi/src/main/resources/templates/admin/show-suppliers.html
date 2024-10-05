@@ -36,6 +36,10 @@
       
           <hr>
 
+          <div th:if="${message}" class="alert" th:classappend="${alertClass}">
+              <p th:text="${message}"></p>
+          </div>
+
           <section class="search-supplier">
             <h4>Search suppliers</h4>
             <form class="form-search">
