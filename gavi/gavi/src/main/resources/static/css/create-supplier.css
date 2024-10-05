@@ -1,0 +1,86 @@
+.create-supplier {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    gap: 10px;
+    color: #015c01;
+  }
+
+  .create-supplier form {
+    width: 70%;
+    justify-self: left;
+  }
+  
+  .form-container {
+    display: flex;
+    justify-content: left;
+    gap: 30px;
+  }
+  
+  .form-container article {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    color: black;
+  }
+  
+  #supplier-data {
+    width: 55%;
+    display: flex;
+  }
+  
+  .form-group {
+    padding: 0 ;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 250px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-left: 10px;
+  }
+  
+  label {
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  
+  input[type="button"] {
+    width: 100px;
+    padding: 10px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type="button"]:hover {
+    background-color: rgba(51, 53, 57, 0.352);
+  }
+  
+  #btn-send {
+    margin-left: 10px;
+    background-color: #248bca;
+    color: white;
+  }
+  
+  #btn-send:hover {
+    background-color: #1e739c;
+  }
+  
