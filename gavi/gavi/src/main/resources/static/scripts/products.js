@@ -37,14 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 //resetear el formulario
-document.addEventListener('DOMContentLoaded', (e) => {
+const btnClean = document.querySelector('#btn-clean');
+btnClean.addEventListener('click', (e) => {
     e.preventDefault();
-    const btnClean = document.querySelector('#btn-clean');
     const itsForm = btnClean.form;
-
-    btnClean.addEventListener('click', () => {
-        itsForm.reset();
-    })
+    itsForm.reset();
 })
 
 //temporizar el mensaje de alerta para la vista de mostrar productos
@@ -55,4 +52,4 @@ setTimeout(function() {
     }
 }, 5000);
 
-//llenar el formulario de editar producto automaticamente
+
