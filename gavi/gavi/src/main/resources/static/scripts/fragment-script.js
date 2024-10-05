@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     menuItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
+        item.addEventListener('click', function() {
             menuItems.forEach(i => i.style.backgroundColor = '');
             item.style.backgroundColor = '#015c01';
         });
