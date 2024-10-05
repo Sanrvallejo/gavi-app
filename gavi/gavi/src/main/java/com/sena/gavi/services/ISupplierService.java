@@ -11,5 +11,4 @@ public interface ISupplierService {
     void create (Supplier supplier);
     List<Supplier> findAll();
     void update (Supplier supplier);
-
 }

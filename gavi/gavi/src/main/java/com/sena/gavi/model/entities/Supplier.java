@@ -21,7 +21,9 @@ public class Supplier {
     private UUID id;
 
     private String name;
+
     private String nit;
+
     private String city;
 
     @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
