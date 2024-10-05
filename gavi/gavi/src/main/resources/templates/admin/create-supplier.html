@@ -39,26 +39,26 @@
         <section class="create-supplier">
             <h2>Create a new supplier</h2>
 
-            <form action="">
+            <form th:action="@{/suppliers/save-supplier}" method="post">
                 <div class="form-container">
                   <article id="supplier-data">
                     <h3>Supplier data</h3>
                     <div class="form-group">
                       <label for="supplier-nit">Nit:</label>
-                      <input type="text" id="supplier-nit" name="supplier-nit" required>
+                      <input type="text" id="supplier-nit" name="nit" required>
                     </div>
                     <div class="form-group">
                       <label for="supplier-name">Name:</label>
-                      <input type="text" id="supplier-name" name="supplier-name" required>
+                      <input type="text" id="supplier-name" name="name" required>
                     </div>
                     <div class="form-group">
                       <label for="supplier-city">City:</label>
-                      <input type="text" id="supplier-city" name="supplier-city" required>
+                      <input type="text" id="supplier-city" name="city" required>
                     </div>
                   </article>
                 </div>
         
-                  <input id="btn-send" type="button" value="Send">
+                  <input id="btn-send" type="submit" value="Send">
                   <input id="btn-clean" type="button" value="Clean">
               </form>
         </section>

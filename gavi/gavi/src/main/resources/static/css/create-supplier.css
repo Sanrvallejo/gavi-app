@@ -60,7 +60,8 @@
     font-weight: 400;
   }
   
-  input[type="button"] {
+  input[type="button"],
+  input[type="submit"]  {
     width: 100px;
     padding: 10px;
     margin-right: 20px;
@@ -70,7 +71,8 @@
     cursor: pointer;
   }
   
-  input[type="button"]:hover {
+  input[type="button"]:hover,
+  input[type="submit"]:hover {
     background-color: rgba(51, 53, 57, 0.352);
   }
   

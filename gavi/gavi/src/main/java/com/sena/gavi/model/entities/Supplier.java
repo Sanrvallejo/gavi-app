@@ -22,6 +22,7 @@ public class Supplier {
 
     private String name;
 
+    @Column(unique = true)
     private String nit;
 
     private String city;
