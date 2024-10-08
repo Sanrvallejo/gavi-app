@@ -32,7 +32,12 @@ public class SupplierServiceImpl  implements ISupplierService{
     }
 
     @Override
-    public void update(Supplier supplier) {
-        supplierRepository.save(supplier);
+    public void update(Supplier incomingSupplier, Supplier foundSupplier) {
+        foundSupplier.setName(incomingSupplier.getName());
+        foundSupplier.setNit(incomingSupplier.getNit());
+        foundSupplier.setCity(incomingSupplier.getCity());
+
+        System.out.println("Supplier updated: " + foundSupplier);
+        supplierRepository.save(foundSupplier);
     }
 }

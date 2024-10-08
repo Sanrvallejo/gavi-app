@@ -10,5 +10,5 @@ public interface ISupplierService {
     Optional<Supplier> findById(UUID id);
     void create (Supplier supplier);
     List<Supplier> findAll();
-    void update (Supplier supplier);
+    void update (Supplier incomingSupplier, Supplier foundSupplier);
 }
