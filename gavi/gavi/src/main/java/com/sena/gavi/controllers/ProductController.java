@@ -4,13 +4,17 @@ import com.sena.gavi.enums.Category;
 import com.sena.gavi.enums.Tax;
 import com.sena.gavi.enums.Units;
 import com.sena.gavi.model.entities.Product;
+import com.sena.gavi.model.entities.Supplier;
 import com.sena.gavi.services.IProductService;
+import com.sena.gavi.services.ISupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -20,6 +24,9 @@ public class ProductController {
 
     @Autowired
     private IProductService productService;
+
+    @Autowired
+    private ISupplierService supplierService;
 
     String viewName = "Inventory";
 
@@ -37,8 +44,10 @@ public class ProductController {
         //pasar los enum como atributos para los select de la vista
         model.addAttribute("categories", Category.values());//categorias
         model.addAttribute("units", Units.values());//unidades
-        // proveedores
         model.addAttribute("taxes", Tax.values());//impuestos
+        // proveedores
+        List<Supplier> suppliersList = supplierService.findAll();
+        model.addAttribute("suppliersList", suppliersList);
         return "admin/create-product";
     }
 

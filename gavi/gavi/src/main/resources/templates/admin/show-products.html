@@ -7,9 +7,9 @@
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link rel="stylesheet"
-    th:href="@{https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap}">
+          th:href="@{https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap}">
     <link rel="stylesheet"
-    th:href="@{https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0}" />
+          th:href="@{https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0}"/>
 
     <link rel="stylesheet" th:href="@{/css/fragments-style.css}">
     <link rel="stylesheet" th:href="@{/css/show-products.css}">
@@ -17,96 +17,96 @@
     <title>Gavi Pro</title>
 </head>
 <body>
-    <div th:replace="fragments :: header"></div>
-    <div th:replace="fragments :: menu-nav"></div>
+<div th:replace="fragments :: header"></div>
+<div th:replace="fragments :: menu-nav"></div>
 
-    <main>
-        <section class="btns-main">
-            <a th:href="@{/products}" class="btn-actions">
-                <span class="material-symbols-rounded">list_alt</span>
-                Show products
-            </a>
-            <a th:href="@{/products/create-product}" class="btn-actions">
-                <span class="material-symbols-rounded">add_circle</span>
-                Create a product
-            </a>
-            <a class="btn-actions">
-                <span class="material-symbols-rounded">unarchive</span>
-                Make an order
-            </a>
-        </section>
+<main>
+    <section class="btns-main">
+        <a th:href="@{/products}" class="btn-actions">
+            <span class="material-symbols-rounded">list_alt</span>
+            Show products
+        </a>
+        <a th:href="@{/products/create-product}" class="btn-actions">
+            <span class="material-symbols-rounded">add_circle</span>
+            Create a product
+        </a>
+        <a class="btn-actions">
+            <span class="material-symbols-rounded">unarchive</span>
+            Make an order
+        </a>
+    </section>
 
-        <hr>
+    <hr>
 
-        <div th:if="${message}" class="alert" th:classappend="${alertClass}">
-            <p th:text="${message}"></p>
-        </div>
+    <div th:if="${message}" class="alert" th:classappend="${alertClass}">
+        <p th:text="${message}"></p>
+    </div>
 
-        <section class="search-product">
-            <h4>Search products</h4>
-            <form class="form-search">
-                <div class="search-input">
-                    <label for="product-code">Product code</label>
-                    <input type="text" id="product-code" name="product-code" required>
-                </div>
-                <form class="form-search">
-                    <div class="search-input">
-                        <label for="product-name">Product name</label>
-                        <input type="text" id="product-name" name="product-name" required>
-                    </div>
+    <section class="search-product">
+        <h4>Search products</h4>
+        <form class="form-search">
+            <div class="search-input">
+                <label for="product-code">Product code</label>
+                <input type="text" id="product-code" name="product-code" required>
+            </div>
 
-                    <input type="button" value="Search">
-                </form>
-        </section>
+            <div class="search-input">
+                <label for="product-name">Product name</label>
+                <input type="text" id="product-name" name="product-name" required>
+            </div>
 
-        <section class="product-list">
-            <table class="product-table">
-                <thead>
-                    <tr>
-                        <th>Created at</th>
-                        <th>Updated at</th>
-                        <th>Code</th>
-                        <th>Product name</th>
-                        <th>Category</th>
-                        <th>Unit</th>
-                        <th>Stock</th>
-                        <th>Tax</th>
-                        <th>Tax value</th>
-                        <th>Cost</th>
-                        <th>Price</th>
-                        <th>Profit</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <body>
-                    <tr th:each="product: ${productslist}">
-                        <td th:text="${product.cretaedAt}"></td>
-                        <td th:text="${product.updatedAt}"></td>
-                        <td th:text="${product.code}"></td>
-                        <td th:text="${product.name}"></td>
-                        <td th:text="${product.category}"></td>
-                        <td th:text="${product.unit}"></td>
-                        <td th:text="${product.stock}"></td>
-                        <td th:text="${product.tax}"></td>
-                        <td th:text="${product.valueTax}"></td>
-                        <td th:text="${product.cost}"></td>
-                        <td th:text="${product.price}"></td>
-                        <td th:text="${product.profit}"></td>
-                        <td>
-                            <a class="btn-td edit-btn" th:href="@{/products/edit/{id} (id = ${product.id})}">
-                                <span class="material-symbols-rounded">edit</span>
-                            </a>
-                            <a class="btn-td remove-btn" th:href="@{/products/remove/{id} (id = ${product.id})}">
-                                <span class="material-symbols-rounded">remove</span>
-                            </a>
-                        </td>
-                    </tr>
-                </body>
-            </table>
-        </section>
-    </main>
+            <input type="button" value="Search">
+        </form>
+    </section>
 
-    <script th:src="@{/scripts/products.js}"></script>
-    <script th:src="@{/scripts/fragment-script.js}"></script>
+    <section class="product-list">
+        <table class="product-table">
+            <thead>
+            <tr>
+                <th>Created at</th>
+                <th>Updated at</th>
+                <th>Code</th>
+                <th>Product name</th>
+                <th>Category</th>
+                <th>Unit</th>
+                <th>Stock</th>
+                <th>Tax</th>
+                <th>Tax value</th>
+                <th>Cost</th>
+                <th>Price</th>
+                <th>Profit</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <body>
+            <tr th:each="product: ${productslist}">
+                <td th:text="${product.cretaedAt}"></td>
+                <td th:text="${product.updatedAt}"></td>
+                <td th:text="${product.code}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.category}"></td>
+                <td th:text="${product.unit}"></td>
+                <td th:text="${product.stock}"></td>
+                <td th:text="${product.tax}"></td>
+                <td th:text="${product.valueTax}"></td>
+                <td th:text="${product.cost}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.profit}"></td>
+                <td>
+                    <a class="btn-td edit-btn" th:href="@{/products/edit/{id} (id = ${product.id})}">
+                        <span class="material-symbols-rounded">edit</span>
+                    </a>
+                    <a class="btn-td remove-btn" th:href="@{/products/remove/{id} (id = ${product.id})}">
+                        <span class="material-symbols-rounded">remove</span>
+                    </a>
+                </td>
+            </tr>
+            </body>
+        </table>
+    </section>
+</main>
+
+<script th:src="@{/scripts/products.js}"></script>
+<script th:src="@{/scripts/fragment-script.js}"></script>
 </body>
 </html>

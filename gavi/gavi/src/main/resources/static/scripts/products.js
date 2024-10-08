@@ -34,7 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const priceValue = parseFloat(cost.value) + parseFloat(inputTaxValue.value) + parseFloat(profit.value);
         price.value = priceValue.toFixed(2);
     }
-})
+});
+
+//temporizar el mensaje de alerta para la vista de mostrar productos
+setTimeout( function() {
+    let alert = document.querySelector('.alert');
+    if (alert) {
+        alert.style.display = 'none';
+    }
+}, 5000);
 
 //resetear el formulario
 const btnClean = document.querySelector('#btn-clean');
@@ -42,14 +50,6 @@ btnClean.addEventListener('click', (e) => {
     e.preventDefault();
     const itsForm = btnClean.form;
     itsForm.reset();
-})
-
-//temporizar el mensaje de alerta para la vista de mostrar productos
-setTimeout(function() {
-    let alert = document.querySelector('.alert');
-    if (alert) {
-        alert.style.display = 'none';
-    }
-}, 5000);
+});
 
 
