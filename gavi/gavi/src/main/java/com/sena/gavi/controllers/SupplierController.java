@@ -63,5 +63,25 @@ public class SupplierController {
         return "admin/edit-supplier";
     }
 
+    @PostMapping("/update-supplier")
+    public String updateSupplier(
+            @PathVariable UUID id,
+            @ModelAttribute Supplier incomingSupplier,
+            RedirectAttributes redirectAttributes) {
+        Optional<Supplier> foundSupplier = supplierService.findById(id);
+        Supplier supplier = foundSupplier.get();
+
+        try {
+            supplierService.update(supplier);
+            redirectAttributes.addFlashAttribute("message", "Supplier updated successfully");
+            redirectAttributes.addFlashAttribute("alertClass", "alert-success");
+        }catch (Exception e) {
+            redirectAttributes.addFlashAttribute("message", "Error updating supplier");
+            redirectAttributes.addFlashAttribute("alertClass", "alert-danger");
+        }
+
+        return "redirect:/suppliers";
+    }
+
 
 }
