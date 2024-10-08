@@ -41,7 +41,7 @@
         <section class="create-supplier">
             <h2>Edit a supplier</h2>
 
-            <form th:action="@{/suppliers/update-supplier}" method="post">
+            <form th:action="@{'/suppliers/update-supplier/' + ${supplier.id}}"  method="post">
                 <div class="form-container">
                   <article id="supplier-data">
                     <h3>Supplier data</h3>
@@ -60,7 +60,7 @@
                   </article>
                 </div>
         
-                  <input id="btn-send" type="button" value="Send">
+                  <input id="btn-send" type="submit" value="Send">
                   <input id="btn-clean" type="button" value="Clean">
               </form>
         </section>
