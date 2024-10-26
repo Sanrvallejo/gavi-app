@@ -95,8 +95,9 @@ public class ProductController {
         //pasar los enum como atributos para los select de la vista
         model.addAttribute("categories", Category.values());//categorias
         model.addAttribute("units", Units.values());//unidades
-        // proveedores
         model.addAttribute("taxes", Tax.values());//impuestos
+        // proveedores
+        model.addAttribute("suppliersList", supplierService.findAll());
 
         //pasar el producto encontrado
         model.addAttribute("product", product);
