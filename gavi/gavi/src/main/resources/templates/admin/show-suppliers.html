@@ -6,9 +6,9 @@
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link rel="stylesheet"
-      th:href="@{https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap}">
+          th:href="@{https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap}">
     <link rel="stylesheet"
-      th:href="@{https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0}" />
+          th:href="@{https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,300,0,0}"/>
     <link rel="stylesheet" th:href="@{/css/fragments-style.css}">
     <link rel="stylesheet" th:href="@{/css/show-suppliers.css}">
     <link rel="shortcut icon" th:href="@{/imgs/logo_gavi.png}" type="image/x-icon">
@@ -16,76 +16,77 @@
 </head>
 <body>
 
-    <!--Header-->
-    <div th:replace="fragments :: header"></div>
-    <!--Menu-->
-    <div th:replace="fragments :: menu-nav"></div>
-    
-      <!--main-->
-      <main>
-        <section class="btns-main">
-            <a th:href="@{/suppliers}" class="btn-actions">
-                <span class="material-symbols-rounded">list_alt</span>
-                Show suppliers
-            </a>
-            <a th:href="@{suppliers/create-supplier}" class="btn-actions">
-                <span class="material-symbols-rounded">add_circle</span>
-                Create a supplier
-            </a>
-          </section>
-      
-          <hr>
+<!--Header-->
+<div th:replace="fragments :: header"></div>
+<!--Menu-->
+<div th:replace="fragments :: menu-nav"></div>
 
-          <div th:if="${message}" class="alert" th:classappend="${alertClass}">
-              <p th:text="${message}"></p>
-          </div>
+<!--main-->
+<main>
+    <section class="btns-main">
+        <a th:href="@{/suppliers}" class="btn-actions">
+            <span class="material-symbols-rounded">list_alt</span>
+            Show suppliers
+        </a>
+        <a th:href="@{suppliers/create-supplier}" class="btn-actions">
+            <span class="material-symbols-rounded">add_circle</span>
+            Create a supplier
+        </a>
+    </section>
 
-          <section class="search-supplier">
-            <h4>Search suppliers</h4>
-            <form class="form-search">
-              <div class="search-input">
+    <hr>
+
+    <div th:if="${message}" class="alert" th:classappend="${alertClass}">
+        <p th:text="${message}"></p>
+    </div>
+
+    <section class="search-supplier">
+        <h4>Search suppliers</h4>
+        <form class="form-search">
+            <div class="search-input">
                 <label for="supplier-nit">Supplier nit</label>
                 <input type="text" id="supplier-nit" name="supplier-nit" required>
-              </div>
-              <form class="form-search">
-                <div class="search-input">
-                  <label for="supplier-name">Supplier name</label>
-                  <input type="text" id="supplier-name" name="supplier-name" required>
-                </div>
-      
-                <input type="button" value="Search">
-              </form>
-          </section>
+            </div>
 
-          <section class="supplier-list">
-            <table class="supplier-table">
-              <thead>
-                <tr>
-                  <th>Supplier name</th>
-                  <th>Nit</th>
-                  <th>City</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-      
-              <body>
-                <tr th:each="supplier: ${suppliersList}">
-                  <td th:text="${supplier.name}"></td>
-                  <td th:text="${supplier.nit}"></td>
-                  <td th:text="${supplier.city}"></td>
-                    <td>
-                        <a class="btn-td edit-btn" th:href="@{/suppliers/edit-supplier/{id} (id = ${supplier.id})}">
-                            <span class="material-symbols-rounded">edit</span>
-                        </a>
-                    </td>
-                </tr>
-              </body>
-            </table>
-          </section>
+            <div class="search-input">
+                <label for="supplier-name">Supplier name</label>
+                <input type="text" id="supplier-name" name="supplier-name" required>
+            </div>
+
+            <input type="button" value="Search">
+        </form>
+    </section>
+
+    <section class="supplier-list">
+        <table class="supplier-table">
+            <thead>
+            <tr>
+                <th>Supplier name</th>
+                <th>Nit</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <body>
+            <tr th:each="supplier: ${suppliersList}">
+                <td th:text="${supplier.name}"></td>
+                <td th:text="${supplier.nit}"></td>
+                <td th:text="${supplier.city}"></td>
+                <td>
+                    <a class="btn-td edit-btn" th:href="@{/suppliers/edit-supplier/{id} (id = ${supplier.id})}">
+                        <span class="material-symbols-rounded">edit</span>
+                    </a>
+                </td>
+            </tr>
+            </body>
+        </table>
+    </section>
 
 
-      </main>
-    
-      <script th:src="@{/scripts/fragment-script.js}"></script>
+</main>
+
+<script th:src="@{/scripts/suppliers.js}"></script>
+<script th:src="@{/scripts/fragment-script.js}"></script>
 </body>
 </html>

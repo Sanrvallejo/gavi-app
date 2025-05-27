@@ -74,9 +74,11 @@
                             <label for="product-supplier">Supplier:</label>
                             <select name="supplier" id="product-supplier">
                                 <option value="" disabled selected>Select a supplier</option>
-                                <option>Opcion 1</option>
-                                <option>Opcion 2</option>
-                                <option>Opcion 3</option>
+                                <option th:each="supplier: ${suppliersList}"
+                                        th:value="${supplier.id}"
+                                        th:text="${supplier.name}">
+                                </option>
+
                             </select>
                         </div>
                     </article>
